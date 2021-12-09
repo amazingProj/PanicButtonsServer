@@ -1,6 +1,6 @@
 var expect = require("expect")
 
-var TransmitterReceiverDistance = require('../algorithms/TransmiterReciever.js')
+var TransmitterReceiverDistance = require("../algorithms/TransmiterReciever.js")
 
 var assert = require('assert')
 

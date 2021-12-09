@@ -5,7 +5,7 @@
  * @returns the distance from the transmitter device(double)
  */
 function TransmitterReceiverDistance(frequency, RSSI){
-    /**constants */
+    // constants ===============
     const ONE_METER_RSSI = 27.55
     const CLEAR_DISTRACTION_ENVIRONMENT_N = 2
     const LOGARITHM_BASIS = 10
