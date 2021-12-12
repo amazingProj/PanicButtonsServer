@@ -1,25 +1,19 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load()
-}
+const express = require('express'); //requires express module
+const socket = require('socket.io'); //requires socket.io module
+const app = express();
+var PORT = process.env.PORT || 3000;
+const server = app.listen(3000); //hosts server on localhost:3000
 
-const express = require('express')
-const app = express()
-const expressLayouts = require('express-ejs-layouts')
+console.log('Server is running');
+const io = socket(server);
 
-const indexRouter = require('./routes/index')
+//Socket.io Connection------------------
+io.on('connection', (socket) => {
 
-app.set('view engine', 'ejs')
-app.set('views', __dirname + '/views')
-app.set('layout', 'layouts/layout')
-app.use(expressLayouts)
-app.use(express.static('public'))
+    console.log("New socket connection: " + socket.id)
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to Mongoose'))
-
-app.use('/', indexRouter)
-
-app.listen(process.env.PORT || 3000)
+    socket.on('wifiInformation', (data) => {
+        console.log(socket.connected);
+        console.log(data); 
+    })
+})

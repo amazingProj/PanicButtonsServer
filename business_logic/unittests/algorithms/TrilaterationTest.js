@@ -1,7 +1,7 @@
 var expect = require("expect");
-var trilaterate = require("../algorithms/trilateration");
+var trilaterate = require("../../algorithms/trilateration");
+var assert = require('chai').assert;
 
-var assert = require('assert');
 describe('Normal cases', function() {
 	describe('Two results', function() {
 		it('First test', function() {

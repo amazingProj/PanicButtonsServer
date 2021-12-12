@@ -19,9 +19,9 @@ function TransmitterReceiverDistance(frequency, RSSI){
         return Math.log10(number) * LOGARITHM_BASIS
     }
 
-    function getFractionToFixed(numerator, denominator, toFix = DEFAULT_TO_FIXED_ANSWER){
+    function getFractionToFixed(numerator, denominator){
         let num = numerator / denominator
-        return Math.toFixed(toFix)
+        return num
     }
 
     if (frequency == undefined || RSSI == undefined){
@@ -29,10 +29,10 @@ function TransmitterReceiverDistance(frequency, RSSI){
     }
 
     let exponentDenominator = CLEAR_DISTRACTION_ENVIRONMENT_N * LOGARITHM_BASIS
-    let exponentNumerator = ONE_METER_RSSI - (getLogNumber(frequency) + RSSI)
+    let exponentNumerator = (ONE_METER_RSSI - (CLEAR_DISTRACTION_ENVIRONMENT_N * getLogNumber(frequency))) + RSSI
     let fraction = getFractionToFixed(exponentNumerator, exponentDenominator)
 
-    return Math.pow(fraction, 10)
+    return parseFloat(Math.pow(10, fraction).toFixed(DEFAULT_TO_FIXED_ANSWER))
 }
 
 module.exports = TransmitterReceiverDistance
