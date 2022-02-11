@@ -26,6 +26,7 @@ exports.socketIoHandler = function (data){
             console.log(accessPointKey)
             let accessPointInfo = wifiInformation[accessPointKey]
             console.log(accessPointInfo)
+            console.log("distance  " + TransmitterReceiverDistance(accessPointInfo["frequency"],accessPointInfo["Rssi"]))
         }
         }
     } catch {
