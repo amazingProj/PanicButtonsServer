@@ -1,19 +1,20 @@
 /**
- * send to model functions
- * @see SocketToModel.js
- *  */
-const SendModel = require('./SocketToModel')
+ * 
+ * @param {socketEvents} socket - socket.io requests path
+ */
 
 exports.events = function(socket) {
     console.log("New socket connection: " + socket.id)
 
     /********************* events ********************* */
 
-    socket.on("macAddress", (data) => {
+    socket.on("get", (data) => {
       console.log(data);
     });
 
-    socket.on("wifiInformation", SendModel.SendData);
+    socket.on("wifiInformation", (data) => {
+
+    });
   
     socket.on("panic-signal", (data) => {
       console.log("emergency signal received " + data + "\n");
